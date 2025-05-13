@@ -1,6 +1,8 @@
 import './globals.css'
+import { Providers } from './providers'
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
+import { Toaster } from 'sonner'
 
 import { SITE_NAME } from '@/constants/seo.constants'
 
@@ -27,7 +29,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${zen.variable} antialiased`}>{children}</body>
+			<body className={`${zen.variable} antialiased`}>
+				<Providers>
+					{children}
+					<Toaster
+						theme='dark'
+						position='bottom-right'
+						toastOptions={{ duration: 2000 }}
+					/>
+				</Providers>
+			</body>
 		</html>
 	)
 }
