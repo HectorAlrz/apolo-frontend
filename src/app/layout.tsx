@@ -1,17 +1,21 @@
 import './globals.css'
 import { Providers } from './providers'
 import type { Metadata } from 'next'
-import { Noto_Sans } from 'next/font/google'
+import { Nunito } from 'next/font/google'
+import { PT_Sans } from 'next/font/google'
 import { Toaster } from 'sonner'
 
 import { SITE_NAME } from '@/constants/seo.constants'
 
-const zen = Noto_Sans({
+const nunito = Nunito({
+	variable: '--font-nunito',
+	subsets: ['latin']
+})
+
+const ptSans = PT_Sans({
+	variable: '--font-pt-sans',
 	subsets: ['latin'],
-	weight: ['300', '400', '500', '600', '700'],
-	display: 'swap',
-	variable: '--font-zen',
-	style: 'normal'
+	weight: ['400', '700']
 })
 
 export const metadata: Metadata = {
@@ -29,7 +33,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${zen.variable} antialiased`}>
+			<body
+				className={`${nunito.variable} ${ptSans.variable} antialiased relative`}
+			>
+				<div className='texture' />
 				<Providers>
 					{children}
 					<Toaster

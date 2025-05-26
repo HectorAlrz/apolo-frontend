@@ -22,10 +22,11 @@ export const CheckBox = (props: {
 }) => {
 	const { extra, color, id, ...rest } = props
 	return (
-		<Input
+		<input
+			type='checkbox'
 			id={id}
 			{...rest}
-			className={`defaultCheckbox relative inline-flex h-[20px] min-h-[20px] w-[20px] min-w-[20px] appearance-none mt-2 items-center justify-center rounded-md border border-[#c0a77e] bg-white/0 p-3 text-base outline-none placeholder:text-[#c0a77e] placeholder:font-normal duration-500 transition-colors focus:border-[#9d865d] checked:border-none checked:text-white checked:bg-[#a3a85e] hover:cursor-pointer`}
+			className={`defaultCheckbox relative inline-flex h-[20px] min-h-[20px] w-[20px] min-w-[20px] appearance-none items-center justify-center rounded-md border border-[#c0a77e] transition ease-linear checked:border-none text-white/0 outline-none  checked:bg-[red-600] hover:cursor-pointer`}
 		/>
 	)
 }

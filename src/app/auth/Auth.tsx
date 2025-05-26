@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Field } from '@/components/ui/fields/Fields'
+import { Input } from '@/components/ui/input'
 
 import { IAuthForm } from '@/types/auth.types'
 
@@ -44,7 +45,8 @@ function Auth() {
 			>
 				Heading fields
 				<div className='flex items-center gap-5 justify-center text-sm'>
-					<Button className='bg-white'>Button</Button>
+					<Button>Button</Button>
+					<Input ></Input>
 				</div>
 				<Field
 					id={'1'}
@@ -52,7 +54,9 @@ function Auth() {
 					placeholder='placeholder'
 					type='text'
 				/>
-				<Checkbox />
+				<div>
+					<Checkbox />
+				</div>
 			</form>
 		</div>
 	)
