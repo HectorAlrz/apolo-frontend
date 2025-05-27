@@ -5,7 +5,7 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import { get } from 'http'
 
 const options: CreateAxiosDefaults = {
-	baseURL: 'http://localhost:4200/api',
+	baseURL: 'http://localhost:3005/api',
 	headers: {
 		'Content-Type': 'application/json'
 	},
