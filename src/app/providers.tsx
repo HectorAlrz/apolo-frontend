@@ -3,6 +3,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { PropsWithChildren, useState } from 'react'
+import { SidebarProvider } from '@/components/ui/sidebar'
 
 export function Providers({ children }: PropsWithChildren) {
 	const [client] = useState(
@@ -20,8 +21,10 @@ export function Providers({ children }: PropsWithChildren) {
 
 	return (
 		<QueryClientProvider client={client}>
-			{children}
-			<ReactQueryDevtools initialIsOpen={false} />
+			<SidebarProvider defaultOpen={true}>
+				{children}
+				<ReactQueryDevtools initialIsOpen={false} />
+			</SidebarProvider>
 		</QueryClientProvider>
 	)
 }

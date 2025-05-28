@@ -34,17 +34,19 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${nunito.variable} ${ptSans.variable} antialiased relative`}
+				className={`${nunito.variable} ${ptSans.variable} antialiased relative bg-lightwood min-h-screen`}
 			>
 				<div className='texture' />
-				<Providers>
-					{children}
-					<Toaster
-						theme='dark'
-						position='bottom-right'
-						toastOptions={{ duration: 2000 }}
-					/>
-				</Providers>
+				<div className="w-full max-w-4xl px-2 sm:px-4 md:px-8 py-4">
+					<Providers>
+						{children}
+						<Toaster
+							theme='dark'
+							position='bottom-right'
+							toastOptions={{ duration: 2000 }}
+						/>
+					</Providers>
+				</div>
 			</body>
 		</html>
 	)

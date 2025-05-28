@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 function DashboardPage() {
 	return (
-		<div className=''>
+		<div>
 			<Heading title='Statistics' />
 			<Statistics />
 		</div>
