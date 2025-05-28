@@ -11,7 +11,7 @@ function Statistics() {
 	return isLoading ? (
 		<Loader />
 	) : (
-		<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-7'>
+		<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-7 mr-4'>
 			{data?.statistics.length ? (
 				data.statistics.map(statistic => {
 					return (

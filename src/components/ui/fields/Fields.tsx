@@ -4,7 +4,7 @@ import { Input } from '../input'
 interface InputFieldProps {
 	id: string
 	label: string
-	placeholder: string
+	placeholder?: string
 	extra?: string
 	variant?: string
 	state?: 'error' | 'success'

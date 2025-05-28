@@ -21,10 +21,10 @@ export function Providers({ children }: PropsWithChildren) {
 
 	return (
 		<QueryClientProvider client={client}>
-			<SidebarProvider defaultOpen={true}>
+			{/* <SidebarProvider defaultOpen={true}>
+			</SidebarProvider> */}
 				{children}
 				<ReactQueryDevtools initialIsOpen={false} />
-			</SidebarProvider>
 		</QueryClientProvider>
 	)
 }
