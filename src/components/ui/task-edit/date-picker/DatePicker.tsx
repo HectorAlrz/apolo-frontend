@@ -1,0 +1,76 @@
+import { Button } from '../../button'
+import { formatCaption } from './DatePickerCaption'
+import cn from 'clsx'
+import dayjs from 'dayjs'
+import LocalizedFormat from 'dayjs/plugin/LocalizedFormat'
+import { X } from 'lucide-react'
+import React from 'react'
+import { useState } from 'react'
+import { DayPicker, type SelectSingleEventHandler } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
+
+import { useOutside } from '@/hooks/useOutside'
+
+dayjs.extend(LocalizedFormat)
+
+interface IDatePicker {
+	onChange: (value: string) => void
+	value: string
+	position?: 'left' | 'right'
+}
+
+function DatePicker({ onChange, value, position = 'right' }: IDatePicker) {
+	const [selected, setSelected] = useState<Date>()
+	const { isShow, setIsShow, ref } = useOutside(false)
+
+	const handleDaySelect: SelectSingleEventHandler = date => {
+		const ISOdate = date?.toISOString()
+
+		setSelected(date)
+		if (ISOdate) {
+			onChange(ISOdate)
+			setIsShow(false)
+		} else {
+			onChange('')
+		}
+	}
+
+	return (
+		<div
+			className='relative'
+			ref={ref}
+		>
+			<Button onClick={() => setIsShow(!isShow)}>
+				{value ? dayjs(value).format('LL') : 'Click for select'}
+			</Button>
+			{value && (
+				<Button className='absolute -top-2 -right-4 opacity-30 hover:opacity-100 transition-opacity'>
+					<X size={14} />
+				</Button>
+			)}
+			{isShow && (
+				<div
+					className={cn(
+						'absolute p-2.5 slide bg-sidebar z-10 shadow rounded-lg',
+						position === 'left' ? '-left-4' : '-right-4'
+					)}
+					style={{ top: 'calc(100% + .7rem' }}
+				>
+					<DayPicker
+						fromYear={2025}
+						toYear={2054}
+						initialFocus={isShow}
+						mode='single'
+						defaultMonth={selected}
+						selected={selected}
+						onSelect={handleDaySelect}
+						weekStartsOn={1}
+						formatters={{ formatCaption }}
+					/>
+				</div>
+			)}
+		</div>
+	)
+}
+
+export default DatePicker

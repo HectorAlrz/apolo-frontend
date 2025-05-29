@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
+import ListView from './list-view/ListView'
 
 function TasksView() {
-	return <div>TasksView</div>
+	return <ListView />
 }
 
 export default TasksView
