@@ -6,7 +6,7 @@ export function useUpdateTask(key?: string) {
 	const queryClient = useQueryClient()
 
 	const { mutate: updateTask } = useMutation({
-		mutationKey: ['update task', key],
+		mutationKey: ['update tasks', key],
 		mutationFn: ({ id, data }: { id: string; data: TypeTaskFormState }) =>
 			taskService.updateTask(id, data),
 		onSuccess: () => {

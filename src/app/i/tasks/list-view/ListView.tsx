@@ -16,25 +16,24 @@ function ListView() {
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
 			<div className={styles.table}>
-				<div>Task Name</div>
-				<div>Due date</div>
-				<div>Priority</div>
-				<div></div>
+				<div className={styles.header}>
+					<div>Task Name</div>
+					<div>Due date</div>
+					<div>Priority</div>
+					<div></div>
+				</div>
+				<div className={styles.parentsWrapper}>
+					{COLUMNS.map(column => (
+						<ListRowParent
+							key={column.value}
+							value={column.value}
+							label={column.label}
+							items={items}
+							setItems={setItems}
+						/>
+					))}
+				</div>
 			</div>
-
-			<div className={styles.parentsWrapper}>
-        {COLUMNS.map.(column => (
-          <ListRowParent
-            key={column.value}
-            value={column.value}
-            label={column.label}
-            items={items}
-            setItems={setItems}
-          />
-        ))
-
-        }
-      </div>
 		</DragDropContext>
 	)
 }

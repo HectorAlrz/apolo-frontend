@@ -38,12 +38,12 @@ function SingleSelect({
 					setIsShow(!isShow)
 				}}
 			>
-				<Badge
+				<span
 					className='capitalize'
-					style={isColorSelected ? { backgroundColor: value } : {}}
+					style={isColorSelected ? { backgroundColor: 'blue' } : {}}
 				>
 					{getValue()}
-				</Badge>
+				</span>
 			</button>
 			{value && (
 				<button

@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { TransparentField } from '@/components/ui/fields/TransparentField'
 import SingleSelect from '@/components/ui/task-edit/SingleSelect'
 import DatePicker from '@/components/ui/task-edit/date-picker/DatePicker'
+import {DatePickerDemo} from '@/components/ui/task-edit/date-picker/CustomDatePicker'
 
 import { ITaskResponse, TypeTaskFormState } from '@/types/task.types'
 
@@ -64,6 +65,10 @@ function ListRow({ item, setItems }: IListRow) {
 					control={control}
 					name='createdAt'
 					render={({ field: { value, onChange } }) => (
+						// <DatePickerDemo
+						// 	onChange={onChange}
+						// 	value={value || ''}
+						// />
 						<DatePicker
 							onChange={onChange}
 							value={value || ''}

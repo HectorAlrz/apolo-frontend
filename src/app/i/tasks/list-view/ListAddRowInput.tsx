@@ -2,6 +2,8 @@ import {type Dispatch, type SetStateAction} from 'react'
 import {ITaskResponse} from '@/types/task.types'
 
 import styles from './ListView.module.scss'
+import { Button } from '@/components/ui/button'
+
 
 interface IListAddRowInput {
   filterDate?: string
@@ -27,12 +29,12 @@ export function ListAddRowInput({setItems, filterDate}: IListAddRowInput) {
 
   return (
     <div className={styles.addRow}>
-      <button
+      <Button
         onClick={addRow}
         className='italic opacity-40 text-sm'
       >
         Add task...
-      </button>
+      </Button>
     </div>
   )
 }

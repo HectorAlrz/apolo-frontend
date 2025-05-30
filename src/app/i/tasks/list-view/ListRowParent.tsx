@@ -28,13 +28,13 @@ export function ListRowParent({
 					ref={provided.innerRef}
 					{...provided.droppableProps}
 				>
-					<div className={styles.colHeading}>
+					<div className={''}>
 						<div className='w-full'>{label}</div>
 					</div>
 					{filterTasks(items, value)?.map((item, index) => (
 						<Draggable
-							key={item.id}
-							draggableId={item.id}
+							key={item.id || `draggable-${index}`}
+							draggableId={item.id ? String(item.id) : `draggable-${index}`}
 							index={index}
 						>
 							{provided => (

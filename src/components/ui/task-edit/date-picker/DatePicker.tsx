@@ -2,7 +2,7 @@ import { Button } from '../../button'
 import { formatCaption } from './DatePickerCaption'
 import cn from 'clsx'
 import dayjs from 'dayjs'
-import LocalizedFormat from 'dayjs/plugin/LocalizedFormat'
+import LocalizedFormat from 'dayjs/plugin/localizedFormat'
 import { X } from 'lucide-react'
 import React from 'react'
 import { useState } from 'react'
@@ -40,13 +40,16 @@ function DatePicker({ onChange, value, position = 'right' }: IDatePicker) {
 			className='relative'
 			ref={ref}
 		>
-			<Button onClick={() => setIsShow(!isShow)}>
+			<button onClick={() => setIsShow(!isShow)}>
 				{value ? dayjs(value).format('LL') : 'Click for select'}
-			</Button>
+			</button>
 			{value && (
-				<Button className='absolute -top-2 -right-4 opacity-30 hover:opacity-100 transition-opacity'>
+				<button
+					onClick={() => onChange('')}
+					className='absolute -top-2 -right-4 opacity-30 hover:opacity-100 transition-opacity'
+				>
 					<X size={14} />
-				</Button>
+				</button>
 			)}
 			{isShow && (
 				<div

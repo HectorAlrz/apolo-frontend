@@ -24,7 +24,7 @@
 			background-color: #0e0ef0;
 
 			> div {
-				@apply fonrt-semibold text-xl py-3;
+				@apply font-semibold text-xl py-3;
 			}
 		}
 		.addRow {
@@ -35,13 +35,13 @@
 			@apply font-normal grid grid-cols-[1.4fr_.4fr_.4fr_.1fr] relative;
 
 			&.completed {
-				> div > spanc > input {
+				> div > span > input {
 					@apply italic line-through opacity-50;
 				}
 			}
 
 			&:hover {
-				@apply opacity-20 transition-opacity -ml3 mr-1;
+				@apply opacity-20 transition-opacity -ml-3 mr-1;
 
 				&:hover,
 				&:active {
