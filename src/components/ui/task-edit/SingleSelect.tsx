@@ -56,6 +56,29 @@ function SingleSelect({
 					<X size={14} />
 				</button>
 			)}
+			{isShow && (
+				<div
+					className={cn(
+						'absolute w-full p-2.5 left-0 slide bg-slate-500 z-10 shadow rounded-lg'
+					)}
+					style={{ top: 'calc(100% + 0.5rem' }}
+				>
+					{data.map(item => (
+						<button
+							key={item.value}
+							onClick={e => {
+								e.preventDefault()
+								onChange(item.value)
+								setIsShow(false)
+							}}
+							className='block-mb-4 last:mb-0 capitalize rounded-lg'
+							style={isColorSelected ? { backgroundColor: item.value } : {}}
+						>
+							<Badge>{item.label}</Badge>
+						</button>
+					))}
+				</div>
+			)}
 		</div>
 	)
 }
