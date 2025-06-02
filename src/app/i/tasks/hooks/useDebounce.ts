@@ -17,9 +17,13 @@ export function useTaskDebounce({ watch, itemId }: IUseTaskDebounce) {
 
 	const debouncedCreateTask = useCallback(
 		debounce((formData: TypeTaskFormState) => {
-			createTask(formData)
+			if (itemId) {
+				({ id: itemId, data: formData })
+			} else {
+				createTask(formData)
+			}
 		}, 444),
-		[]
+		[itemId, createTask, updateTask]
 	)
 
 	const debouncedUpdateTask = useCallback(
@@ -41,10 +45,8 @@ export function useTaskDebounce({ watch, itemId }: IUseTaskDebounce) {
 			}
 		})
 
-    return () => {
-      unsubscribe()
-      debouncedCreateTask.cancel()
-      debouncedUpdateTask.cancel()
-    }
+		return () => {
+			unsubscribe()
+		}
 	}, [watch(), debouncedCreateTask, debouncedUpdateTask])
 }
