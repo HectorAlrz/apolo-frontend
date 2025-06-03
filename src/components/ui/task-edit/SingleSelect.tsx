@@ -1,5 +1,5 @@
 import cn from 'clsx'
-import { X } from 'lucide-react'
+import { ChevronDown, X } from 'lucide-react'
 import React from 'react'
 
 import { Badge } from '@/components/ui/badge'
@@ -27,9 +27,17 @@ function SingleSelect({
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const getValue = () => data.find(item => item.value === value)?.value
 
+	const priorityStyles = {
+		critical: 'bg-purple-100 text-red-800 border-purple-200 hover:bg-purple-200',
+		high: 'bg-red-100 text-red-800 border-red-200 hover:bg-red-200',
+		medium:
+			'bg-yellow-100 text-yellow-800 border-yellow-200 hover:bg-yellow-200',
+		low: 'bg-green-100 text-green-800 border-green-200 hover:bg-green-200'
+	}
+
 	return (
 		<div
-			className={cn('relative min-w-36', { 'w-max': isColorSelected })}
+			className={cn('relative min-w-32', { 'w-max': isColorSelected })}
 			ref={ref}
 		>
 			<button
@@ -37,31 +45,36 @@ function SingleSelect({
 					e.preventDefault()
 					setIsShow(!isShow)
 				}}
+				className='w-full'
 			>
-				<span
-					className='capitalize'
-					style={isColorSelected ? { backgroundColor: 'blue' } : {}}
+				<Badge
+					className={cn(
+						'capitalize relative flex items-center gap-2 px-3 py-1.5 border-2 transition-all duration-200',
+						value
+							? priorityStyles[value as keyof typeof priorityStyles]
+							: 'bg-[#f0e6d2] text-[#5c4d3c] border-[#5c4d3c]/30 hover:border-[#5c4d3c]/50'
+					)}
+					style={isColorSelected ? { backgroundColor: value } : {}}
 				>
-					{getValue()}
-				</span>
+					{getValue() || 'Priority...'}
+					<ChevronDown className='h-3 w-3' />
+				</Badge>
 			</button>
 			{value && (
 				<button
-					className='absolute top-0 right-0 opacity-30 hover:opacity-100 transition-opacity'
+					className='absolute top-1 right-1 opacity-50 hover:opacity-100 transition-opacity z-10'
 					onClick={e => {
 						e.preventDefault()
 						onChange('')
 					}}
 				>
-					<X size={14} />
+					<X size={12} />
 				</button>
 			)}
 			{isShow && (
 				<div
-					className={cn(
-						'absolute w-full p-2.5 left-0 slide bg-slate-500 z-10 shadow rounded-lg'
-					)}
-					style={{ top: 'calc(100% + 0.5rem' }}
+					className='absolute w-full p-2 left-0 bg-[#f0e6d2] border-2 border-[#5c4d3c]/30 z-20 shadow-lg rounded-lg mt-1'
+					style={{ top: 'calc(100% + 0.25rem)' }}
 				>
 					{data.map(item => (
 						<button
@@ -71,10 +84,17 @@ function SingleSelect({
 								onChange(item.value)
 								setIsShow(false)
 							}}
-							className='block-mb-4 last:mb-0 capitalize rounded-lg'
+							className='block w-full mb-2 last:mb-0 text-left'
 							style={isColorSelected ? { backgroundColor: item.value } : {}}
 						>
-							<Badge>{item.label}</Badge>
+							<Badge
+								className={cn(
+									'w-full justify-start capitalize border-2 transition-all duration-200',
+									priorityStyles[item.value as keyof typeof priorityStyles]
+								)}
+							>
+								{item.label}
+							</Badge>
 						</button>
 					))}
 				</div>

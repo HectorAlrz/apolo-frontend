@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		default: SITE_NAME,
 		template: `%s | ${SITE_NAME}`
 	},
-	description: 'Todo list for personal use'
+	description: 'A simple task manager application'
 }
 
 export default function RootLayout({
@@ -34,7 +34,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${nunito.variable} ${ptSans.variable} antialiased relative bg-lightwood min-h-screen`}
+				className={`${nunito.variable} ${ptSans.variable} ${nunito.className} antialiased relative bg-lightwood min-h-screen`}
 			>
 				<div className='texture' />
 				<Providers>

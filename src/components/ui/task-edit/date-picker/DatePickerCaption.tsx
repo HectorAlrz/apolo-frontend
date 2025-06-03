@@ -24,7 +24,7 @@ export const formatCaption: DateFormatter = month => {
 			<span
 				role='img'
 				aria-label={season}
-				className='mr-2'
+				className='mr-2 z-10'
 			>
 				{seasonEmoji[season]}
 			</span>

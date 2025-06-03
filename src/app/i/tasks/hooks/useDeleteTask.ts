@@ -9,7 +9,6 @@ export function useDeleteTask() {
 	const {
 		mutate: deleteTask,
 		isPending
-
 	} = useMutation({
 		mutationKey: ['delete task'],
 		mutationFn: (id: string) => taskService.deleteTask(id),

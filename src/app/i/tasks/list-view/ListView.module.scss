@@ -21,7 +21,7 @@
 
 	.parentsWrapper {
 		.colHeading {
-			background-color: #0e0ef0;
+			@apply bg-background/80;
 
 			> div {
 				@apply font-semibold text-xl py-3;
@@ -41,12 +41,7 @@
 			}
 
 			&:hover {
-				@apply opacity-20 transition-opacity -ml-3 mr-1;
-
-				&:hover,
-				&:active {
-					@apply opacity-100;
-				}
+				@apply transition-colors bg-accent/10;
 			}
 		}
 	}

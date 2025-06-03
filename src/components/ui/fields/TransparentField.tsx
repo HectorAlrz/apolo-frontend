@@ -11,7 +11,7 @@ export const TransparentField = forwardRef<
 		<input
 			ref={ref}
 			className={cn(
-				'bg-transparent border-none focus:outline-0 focus:shadow-transparent w-full',
+				'bg-transparent border-none outline-none text-[#5c4d3c] placeholder-[#5c4d3c]/50',
 				className
 			)}
 			{...rest}
